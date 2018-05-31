@@ -7,15 +7,16 @@
 <body>
     <form method="POST" action="https://webhook.site/488fda6e-bd7c-4c74-b295-319a7b62ae1d">
         <label for="email">
-            Email <input id="email" type="email" name="email" placeholder="email@email.com">
-        </label>
-        <label for="password">
-            Password <input id="password" type="password" name="password" placeholder="password">
+            Email: <input id="email" type="email" name="email" placeholder="email@email.com">
         </label>
         <br>
-
-        <p>Enter your Bio</p>
-        <textarea name="bio"></textarea>
+        <label for="password">
+            Password: <input id="password" type="password" name="password" placeholder="password">
+        </label>
+        <br>
+        <br>
+        <label for="bio">Bio:</label>
+        <textarea id="bio" name="bio" cols="55"></textarea>
 
         <p>How did you hear about us?</p>
         <input type="radio" name="hear_about" value="billboard"> Billboard<br>
