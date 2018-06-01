@@ -4,40 +4,79 @@
         <meta charset="UTF-8">
         <title>My first page</title>
         <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     </head>
     <body>
-        <header id="top">
-            <h1 class="fancy-header">Welcome to Veridian Dynamics!</h1>
-            <p>At Veridian Dynamics, <b>we</b> solve <i>your</i> problems with <b><i>technology</i></b></p>
-            <hr>
-        </header>
-        <main>
-            <h2>Core Values</h2>
-            <ul>
-                <li>Competence</li>
-                <li>Involvment</li>
-                <li>Technology</li>
-            </ul>
-            <h2>Our Process</h2>
-                <ol>
-                    <li>Plan</li>
-                    <li>Evaluate</li>
-                    <li>Implement</li>
-                </ol>
-            <h2>2020 Vision</h2>
-                <ul>
-                    <li>Become #1 in Technology</li>
-                    <li>Increase Success by 20%</li>
-                    <li>Increase Business by 30%</li>
-                </ul>
-            <hr>
-            <h2>Company Vision</h2>
-                <img src="img/computer.jpg" alt="Working on computers" width="400px">
-                <img src="img/hike.jpg" alt="Hiking man silhouette" width="400px">
-                <img src="img/ocean.jpg" alt="Ocean sunset" width="400">
-                <img src="img/eat.jpg" alt="People eating in restaurant" width="400">
-            <h2>Our Product</h2>
-            <table>
+        <div id="top">
+            <header>
+                <h1 class="fancy-header">Welcome to Veridian Dynamics!</h1>
+                <p>At Veridian Dynamics, <b>we</b> solve <i>your</i> problems with <b><i>technology</i></b></p>
+            </header>
+        </div>
+        <main class="container">
+
+            <!-- 3 lists and descriptions -->
+            <div class="flex">
+                <div class="left">
+                    <h3>Core Values</h3>
+                    <ul>
+                        <li>Competence</li>
+                        <li>Involvement</li>
+                        <li>Technology</li>
+                    </ul>
+                </div>
+                <div class="left">
+                    <h3>Our Process</h3>
+                        <ol>
+                            <li>Plan</li>
+                            <li>Evaluate</li>
+                            <li>Implement</li>
+                        </ol>
+                </div>
+                <div class="left">
+                    <h3>2020 Vision</h3>
+                        <ul>
+                            <li>Become #1 in Technology</li>
+                            <li>Increase Success by 20%</li>
+                            <li>Increase Business by 30%</li>
+                        </ul>
+                </div>
+            </div>
+
+            <!-- clears floats from above -->
+            <div class="clear">
+                <hr>
+                <h2>Company Vision</h2>
+                <div class="gallery">
+                    <a target="_blank" href="img/computer.jpg">
+                        <img src="img/computer.jpg" alt="Forest" width="800" height="400">
+                    </a>
+                    <div class="desc">Work hard!</div>
+                </div>
+                <div class="gallery">
+                    <a target="_blank" href="img/hike.jpg">
+                        <img src="img/hike.jpg" alt="Forest" width="800" height="400">
+                    </a>
+                    <div class="desc">Play hard!</div>
+                </div>
+                <div class="gallery">
+                    <a target="_blank" href="img/ocean.jpg">
+                        <img src="img/ocean.jpg" alt="Forest" width="800" height="400">
+                    </a>
+                    <div class="desc">Relax a lot!</div>
+                </div>
+                <div class="gallery">
+                    <a target="_blank" href="img/eat.jpg">
+                        <img src="img/eat.jpg" alt="Forest" width="800" height="400">
+                    </a>
+                    <div class="desc">Eat a lot!</div>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <h2 class="clear">Our Product</h2>
+            <table class="table">
                 <tr>
                     <th>Plan</th>
                     <th>Price</th>
@@ -60,7 +99,7 @@
                 </tr>
             </table>
             <p><i>All products come with our quality gaurantee<sup>TM</sup></i>.</p>
-            <a href="#top"><h2>Go to the top of the page</h2></a>
-        </main>
+            <a href="#top"><i class="fa fa-caret-square-o-up" style="font-size:36px"></i></a>
+        </footer>
     </body>
 </html>
