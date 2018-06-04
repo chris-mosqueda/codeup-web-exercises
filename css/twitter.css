@@ -7,6 +7,7 @@
 }
 * {
     box-sizing: border-box;
+    /*border: 1px solid black;*/
 }
 body, html {
     background-color: var(--main-bg);
@@ -113,7 +114,7 @@ a {
     background-color: var(--light-bg);
     border-bottom: 1px var(--separator-color) solid;
     padding: .5em;
-    overflow: hidden;
+    overflow: auto;
 }
 .media-image {
     max-width: 50px;
