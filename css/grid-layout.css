@@ -1,0 +1,55 @@
+* {
+    margin: 0;
+    padding: 0;
+
+}
+
+body {
+    background: #fff7e6;
+}
+
+.container {
+    width: 80%;
+    background-color: #cbffcd;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+.row {
+    width: 100%;
+}
+
+.row:after {
+    clear: both;
+}
+
+.col {
+    padding: 10px;
+    float: left;
+    margin-bottom: 10px;
+}
+
+.one-half {
+    width: calc(50% - 22px);
+}
+
+.one-third {
+    width: calc(33.33% - 22px);
+}
+
+.two-third {
+    width: calc(66.66% - 22px);
+}
+
+.one-fourth {
+    width: calc(25% - 22px);
+}
+
+.one-sixth {
+    width: calc(16.66% - 22px);
+}
+
+.one-eigth {
+    width: calc(12.5% - 22px);
+}
