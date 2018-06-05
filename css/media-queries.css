@@ -18,7 +18,25 @@ footer {
     margin-top: 50px;
 }
 
-/* Small devices (tablets, 768px and up) */
+li {
+    text-align: center;
+}
+
+.nav-links a {
+    display: block;
+    background-color: lightgray;
+    margin: 10px 0;
+    padding: 10px;
+}
+
+ul.nav-links {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+
+}
+
+/* Small devices (tablets, 768px and up)
 @media screen and (min-width:360px) {
 
     li {
@@ -39,7 +57,7 @@ footer {
 
     }
 }
-
+*/
 /* Medium devices (desktops, 992px and up) */
 @media screen and (min-width:768px) {
     .hidden-on-desktop {
@@ -90,17 +108,14 @@ footer {
     clear: both;
 }
 
-.alert-info a:link {
+.alert-info a { /* use this, not ...a:link so it acts as a button (noted) */
     color: black;
     text-decoration: none;
-
-}
-
-.alert-info {
     border: #e6e6e6 1px solid;
     text-align: center;
     padding: 10px;
     background-color: #ccffff;
+    display: block; /* extends link full width of screen */
 }
 
 #social-media-links {
