@@ -10,6 +10,8 @@ function sayHello(name) {
     return "Hello, " + name;
 }
 
+var name = prompt("What is your name?");
+console.log(sayHello(name));
 /**
  * TODO:
  * Call the function 'sayHello' and pass your name as a string literal argument.
@@ -82,6 +84,7 @@ console.log(isTwo(random));
 //     return alert("You should tip: " + tipAmount + "$");
 // }
 // calculateTip();
+// ///////console.log(calculateTip(prompt('What is tip % ?'), prompt('What is total bill?')));
 /**
  * TODO:
  * Create a function named `applyDiscount`. This function should accept a price
