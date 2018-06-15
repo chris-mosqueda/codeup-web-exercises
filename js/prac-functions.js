@@ -2,17 +2,15 @@
 // 1) Make a function called returnTwo() that returns the number 2 when called
 // ---Test this function with console.log(returnTwo())
     function returnTwo(number){
-        number = 2;
         return number;
     }
-    console.log(returnTwo());
+    console.log(returnTwo(2));
 // 2) Make a function called returnName() that returns the string of your name
 // ---Test this function with console.log(returnName())
     function returnName(name){
-        name = "Chris M."
         return console.log(name);
     }
-    returnName();
+    returnName("Chris M.");
 // 3) Make a function called addThree() which takes in a number input and returns the number plus 3.
 // ---Test this function with console.log(addThree(5))
     function addThree(number){
@@ -42,17 +40,24 @@ function identity(input){
 console.log(identity("jimmyP"));
 // Write a function called `getRandomNumber(min, max)` that returns a random number between min and max values sent to that function call.
 function getRandomNumber(min, max){
-    min = 1;
-    max = 20;
+
     var rand = Math.floor((Math.random() * 20) + 1);
     return rand;
 }
-console.log(getRandomNumber());
+console.log(getRandomNumber(1, 20));
+
 // Write a function called `first(input)` that returns the first character in the provided string.
 function first(input){
-
+    return input.charAt(0);
 }
-// Write a fuction called `last(input)` that returns the last character of a string
+console.log(first("Chris"));
+
+// Write a function called `last(input)` that returns the last character of a string
+function last(input){
+    return input.substr(-1);
+}
+console.log(last("jenny"));
+
 // Write a function called `rest(input)` that returns everything but the first character of a string.
 // Write a function called `reverse(input)` that takes a string and returns it reversed.
 // Write a function called `isNumeric(input)` that takes an input and returns a boolean if the input is numeric.

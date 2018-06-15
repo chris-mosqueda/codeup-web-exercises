@@ -47,42 +47,35 @@
 
 // refactored with functions
 
-
 // var input = confirm("Would you like to enter a number?");
 // function jsWithNumbers(){
-//
-//     //Can delete this function below, was not sure if directions wanted multiple functions but it works :)
-//     function add100funct(){
-//         var add100 = parseInt(pickNumber) + 100;
-//         alert(pickNumber + " + 100 = " + add100);
-//     }
-//
+//     var msg;
 //     //if user clicks "ok" then continue with picking a number
-//     if (input == 1){
+//     if (input){
 //
 //         var pickNumber = prompt("What is your number?");
 //         //below checks if user entered a number
 //         if(isNaN(parseInt(pickNumber))){
-//             alert("Not a number");
+//             msg = alert("Not a number");
 //         } else {
 //             var evenOdd = pickNumber % 2;
 //             if (evenOdd == 0){
-//                 alert(pickNumber + " is even");
+//                 msg = alert(pickNumber + " is even");
 //             } else {
-//                 alert(pickNumber + " is odd");
+//                 msg = alert(pickNumber + " is odd");
 //             }
-//
-//             add100funct(); //can delete this function and uncomment below 2 lines instead
-//
-//             // var add100 = parseInt(pickNumber) + 100;
-//             // alert(pickNumber + " + 100 = " + add100);
 //
 //             if (pickNumber < 0){
-//                 alert("Your number is negative");
+//                 msg = alert("Your number is negative");
 //             } else {
-//                 alert("Your number is positive");
+//                 msg = alert("Your number is positive");
 //             }
+//
+//             var add100 = parseInt(pickNumber) + 100;
+//             msg = alert(pickNumber + " + 100 = " + add100);
+//
 //         }
+//         return msg;
 //     }
 // }
 // jsWithNumbers();
@@ -116,9 +109,9 @@
 //     } else if (input === "yellow"){
 //         message = ("My working cup is yellow");
 //     } else if (input === "violet"){
-//         message = ("Plums are violet")
+//         message = ("Plums are violet");
 //     } else {
-//         message = ("Color not in list")
+//         message = ("Color not in list");
 //     }
 //     return message;
 // }
@@ -178,7 +171,7 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
 // function analyzeColor(input){
 //     input = prompt("Type a color to see if it's listed.");
 //     var message;
-//     switch (input){  //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+//     switch (input){
 //         case "blue":
 //             message = ("Blue is the color of the sky");
 //                 break;
@@ -223,7 +216,7 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
  */
 
 // function calculateTotal(luckyNumber, totalAmount){
-//     var discountedPrice;
+//     var discountedPrice = 0;
 //     switch (luckyNumber){
 //         case 0:
 //             discountedPrice = totalAmount;
@@ -243,6 +236,8 @@ var randomColor = colors[Math.floor(Math.random() * colors.length)];
 //         case 5:
 //             discountedPrice = totalAmount * 0;
 //             break;
+//         default:
+//             discountedPrice = "Invalid Number";
 //     }
 //
 //     return parseInt(discountedPrice, 10);
@@ -268,20 +263,22 @@ function calculateTotal(luckyNumber, totalAmount){
             discountedPrice = totalAmount;
             break;
         case 1:
-            discountedPrice = totalAmount - (totalAmount * .1);
+            discountedPrice = totalAmount * (0.9);
             break;
         case 2:
-            discountedPrice = totalAmount - (totalAmount * .25);
+            discountedPrice = totalAmount * (0.75);
             break;
         case 3:
-            discountedPrice = totalAmount - (totalAmount * .35);
+            discountedPrice = totalAmount * (0.65);
             break;
         case 4:
-            discountedPrice = totalAmount - (totalAmount * .50);
+            discountedPrice = totalAmount * (0.50);
             break;
         case 5:
             discountedPrice = totalAmount * 0;
             break;
+        default:
+            discountedPrice = "Invalid Number";
     }
 
     return alert("Congratulations! Now you pay: $" + parseInt(discountedPrice, 10) + "\nYour discount number was " + luckyNumber +
