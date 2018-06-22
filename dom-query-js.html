@@ -81,16 +81,12 @@
             });
 
             var bkgrdColor = document.getElementById("bkgrdColor");
+            var body = document.getElementsByTagName("body")[0];
             bkgrdColor.addEventListener("click", function() {
-                var body = document.getElementsByTagName("body")[0];
-                body.style.backgroundColor = "tan";
+                body.style.background = "linear-gradient(to bottom, #ffffff 0%, #99ffcc 100%)";
             });
 
             var btnPara = document.getElementById("btnPara");
-            // btnPara.addEventListener("click", function() {
-            //    subParagraph.style.fontSize = "5em";
-            // });
-
             function bigText() {
                 subParagraph.style.fontSize = "5em";
             };
