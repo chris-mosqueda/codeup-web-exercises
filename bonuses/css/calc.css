@@ -1,0 +1,46 @@
+body {
+    padding: 0;
+    margin: 0;
+    font-family: 'Abel', sans-serif;
+    font-size: 1em;
+}
+
+h1 {
+    margin: 40px;
+}
+
+#calculator {
+    background: linear-gradient(to bottom, #f2f2f2 25%, #ccffff 100%);
+    width: 320px;
+    height: 350px;
+    margin-bottom: 30px;
+    border-radius: 20px;
+    padding: 30px 15px;
+}
+
+.col-3, col-2, col-5 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.calcBtn{
+    background: linear-gradient(to bottom, #f2f2f2 25%, #ccffff 100%);
+    width: 65px;
+    margin-left: 5px;
+    margin-top: 7px;
+}
+
+#firstInput, #operator, #secondInput {
+    margin: 7px 0 2px 2px;
+    height: 40px;
+    background: dimgrey;
+    color: lime;
+
+}
+
+#firstNumHere, #secondNumHere {
+    overflow: auto;
+    margin-left: -10px;
+}
+
+
