@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Google Map Practice</title>
+    <style>
+        #map-canvas {
+            height: 500px;
+        }
+    </style>
+
+</head>
+<body>
+    <!-- holds map -->
+    <div id="map-canvas"></div>
+
+    <script>
+        function initMap() {
+            var mapCanvas = document.getElementById("map-canvas");
+            var mapOptions = {
+                zoom: 13,
+                center: {
+                    lat: 29.426791,
+                    lng: -98.48602
+                }
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions); //this is a constructor (for map Object)
+
+            //GEOCODING - use phys ddress to find the lat, lng coord -----------------------
+            var geo = new google.maps.Geocoder();
+            // (2) geo.geocode({location: {lat: 29.5845, lng: -98.61797394857938}}, function(response, status) {
+            geo.geocode({address: "1 UTSA Circle"}, function(response, status) { //THIS function waits for google server respone
+
+                if (status === "OK") {
+                console.log(response[0].geometry.location.lat()); //THIS, response[0] = the first match, good
+                // console.log(response[0].geometry.location.lng()); //THIS, gives you lat & lng
+
+                    // map.setCenter(response[0].geometry.location); ANOTHER WAY - gives you center of locatoin
+
+                    // (2) USE THIS WHEN FIRST USING COORD > TO GET A STRING FOR ADDRESS
+                    //console.log(response[1].formateed_address);
+                } else {
+                    alert("invalid");
+                }
+
+            });
+
+            // SETTING MARKER ------------------------------------
+            var marker = new google.maps.Marker({
+                position: {
+                    lat: 29.234543,
+                    lng: -98.87346
+                },
+                map: map
+            });
+
+            //INFO WINDOW ------------------------------------------
+            var infoWindow = new google.maps.InfoWindow({
+               content: "This is Codeup"
+            });
+
+            //infoWindow.open(map, marker);
+
+            // EVENT LISTENER --------------------------------------
+            map.addListener("dragend", function() {
+                infoWindow.open(map, marker);
+            });
+
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxIPbNd4ljI6NdSyP5ugk4XoKDzw2VEZM&callback=initMap">
+
+    </script>
+</body>
+</html>
