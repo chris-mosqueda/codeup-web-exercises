@@ -1,0 +1,49 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>JacknBox</title>
+</head>
+<body>
+
+    <script>
+        "use strict";
+
+        var jackBox = {
+            triggered: false,
+            intervalId: null,
+
+            lyrics: [
+                "All a-...",
+                "-round the ...",
+                "mulberry...",
+                "bush, The...",
+                "monkey...",
+                "chased the...",
+                "wea-...",
+                "-sel...",
+                "The monkey...",
+                "stopped to...",
+                "pull up his...",
+                "sock,...",
+                "Pop!...",
+                "goes the...",
+                "wea-...",
+                "-sel."
+            ],
+
+            play: function() {
+                for (var i = 0; i <= jackBox.lyrics.length - 1; i++) {
+                    console.log(jackBox.lyrics[i]);
+
+                }
+                // this.lyrics.forEach(function(element) {
+                //     setInterval(function(){console.log(element);
+                //     }, 1000);
+                // });
+            }
+        };
+        jackBox.intervalId += setInterval(jackBox.play, 1000);
+    </script>
+</body>
+</html>
