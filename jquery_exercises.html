@@ -3,35 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>JQuery Practice</title>
-
 </head>
 <body>
-    <h1 style="background: red;">JQuery</h1>
-
+    <h1 style="background: red; margin:0;">JQuery</h1>
+    <p style="margin:0;">hi</p>
     <input id="playInput"><button id="playButton">Play</button>
     <div id="playOutput"></div>
 
-        <p class="importante">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aperiam aut corporis, dolorem doloribus dolorum earum eum, eveniet incidunt ipsam, iusto magni nesciunt omnis quas ratione rem tempore unde.</p>
-        <p class="importante">Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aspernatur autem beatae cum dolorem, earum eligendi, eos id libero molestias nihil, obcaecati officia repellendus vero voluptatem! Aliquid beatae porro tempora!</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloribus officiis praesentium? Accusantium, dicta, similique! Atque consequuntur delectus doloribus, explicabo facere harum in magni quas recusandae reprehenderit similique soluta voluptate!</p>
-        <p class="importante">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquid asperiores, error esse harum laudantium odit quis sequi, sint ullam vel. Aspernatur aut consectetur distinctio eum fugit officia officiis!</p>
+        <ul class="codeup">
+            <li class="codeup" id="german">German Shepherd</li>
+            <li id="great">Great Dane</li>
+            <li id="corgi">Corgi</li>
+            <li id="pom">Pomeranian</li>
+        </ul>
+    <h3>Paragraphs</h3>
+    <p class="codeup">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium adipisci aperiam aut corporis, dolorem doloribus dolorum earum eum, eveniet incidunt ipsam, iusto magni nesciunt omnis quas ratione rem tempore unde.</p>
+    <p id="double">first paragraph........ elit. A aspernatur autem beatae cum dolorem, earum eligendi, eos id libero molestias nihil, obcaecati officia repellendus vero voluptatem! Aliquid beatae porro tempora!</p>
+    <div id="box" style="background:#98bf21;height:100px;width:100px;margin:6px;"></div>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias doloribus officiis praesentium? Accusantium, dicta, similique! Atque consequuntur delectus doloribus, explicabo facere harum in magni quas recusandae reprehenderit similique soluta voluptate!</p>
+    <p id="lastP">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab accusamus aliquid asperiores, error esse harum laudantium odit quis sequi, sint ullam vel. Aspernatur aut consectetur distinctio eum fugit officia officiis!</p>
+
     <!-------------------------------------  JS  ---------------------------------->
-    <script type="text/javascript" src="/js/jquery2.js"></script>
-
-    <script>
-        "use strict";
-        $(document).ready(function () {
-            $("#playButton").click(function () {
-                $("#playOutput").text($("#playInput").val());
-                $("h1").toggle(4000);
-
-            }); //.on = like using addEventLlistener
-
-            $(".importante").mouseover(function() {
-                $(this).css("background-color","yellow");
-            })
-        });
-
-    </script>
+    <!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>-->
+    <script src="js/jquery2.js"></script>
+    <script src="js/jqueryIntro.js"></script>
 </body>
 </html>
