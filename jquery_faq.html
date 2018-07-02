@@ -14,6 +14,7 @@
     }
 </style>
     <h1>Texas National Park FAQs</h1>
+    <a href="#" id="invToggle">Toggle view</a>
     <dl>
         <dt>Big Bend</dt>
             <dd class="invisible">There is a place in Far West Texas where night skies are dark as coal and rivers carve temple-like canyons in ancient limestone. Here, at the end of the road, hundreds of bird species take refuge in a solitary mountain range surrounded by weather-beaten desert. Tenacious cactus bloom in sublime southwestern sun, and diversity of species is the best in the country. This magical place is Big Bend.</dd>
@@ -36,16 +37,15 @@
         <dt>Chamizal</dt>
             <dd class="invisible">Chamizal is more than just an urban park to recreate or enjoy a quiet afternoon. These grounds are a reminder of the harmonious settlement of a 100-year border dispute between the United States and Mexico. We celebrate the cultures of the borderlands to promote the same mutual respect that helped to diplomatically resolve an international disagreement.</dd>
     </dl>
-    <a href="#" id="invToggle">Toggle view</a>
     <script src="js/jquery.js"></script>
     <script>
         "use strict";
         $(function () {
 
-           $("#invToggle").click(function(){
+           $("#invToggle").click(function(event){
+               event.preventDefault();
               $("dd").toggleClass('invisible');
            });
-
            $("dt").click(function() {
               $(this).addClass("highlighted");
            });
