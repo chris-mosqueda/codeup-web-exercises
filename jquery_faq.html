@@ -6,35 +6,50 @@
 </head>
 <body>
 <style>
-
+    .invisible {
+        display: none;
+    }
+    .highlighted {
+        background-color: #FF0;
+    }
 </style>
-    <h1>FAQs about Parks</h1>
+    <h1>Texas National Park FAQs</h1>
     <dl>
         <dt>Big Bend</dt>
-            <dd>There is a place in Far West Texas where night skies are dark as coal and rivers carve temple-like canyons in ancient limestone. Here, at the end of the road, hundreds of bird species take refuge in a solitary mountain range surrounded by weather-beaten desert. Tenacious cactus bloom in sublime southwestern sun, and diversity of species is the best in the country. This magical place is Big Bend.</dd>
+            <dd class="invisible">There is a place in Far West Texas where night skies are dark as coal and rivers carve temple-like canyons in ancient limestone. Here, at the end of the road, hundreds of bird species take refuge in a solitary mountain range surrounded by weather-beaten desert. Tenacious cactus bloom in sublime southwestern sun, and diversity of species is the best in the country. This magical place is Big Bend.</dd>
         <dt>Big Thicket</dt>
-            <dd>Life of all types abounds in the Big Thicket. This national preserve protects the incredible diversity of life found where multiple habitats converge in southeast Texas. Hiking trails and waterways meander through nine different ecosystems, from longleaf pine forests to cypress-lined bayous. It is a place of discovery, a place to wander and explore, a place to marvel at the richness of nature.</dd>
+            <dd class="invisible">Life of all types abounds in the Big Thicket. This national preserve protects the incredible diversity of life found where multiple habitats converge in southeast Texas. Hiking trails and waterways meander through nine different ecosystems, from longleaf pine forests to cypress-lined bayous. It is a place of discovery, a place to wander and explore, a place to marvel at the richness of nature.</dd>
         <dt>Fort Davis</dt>
-            <dd>Fort Davis is one of the best surviving examples of an Indian Wars' frontier military post in the Southwest. From 1854 to 1891, Fort Davis was strategically located to protect emigrants, mail coaches, and freight wagons on the Trans-Pecos portion of the San Antonio-El Paso Road and on the Chihuahua Trail.</dd>
+            <dd class="invisible">Fort Davis is one of the best surviving examples of an Indian Wars' frontier military post in the Southwest. From 1854 to 1891, Fort Davis was strategically located to protect emigrants, mail coaches, and freight wagons on the Trans-Pecos portion of the San Antonio-El Paso Road and on the Chihuahua Trail.</dd>
         <dt>Guadalupe Mountains</dt>
-            <dd>Guadalupe Mountains National Park protects the world's most extensive Permian fossil reef, the four highest peaks in Texas, an environmentally diverse collection of flora and fauna, and the stories of lives shaped through conflict, cooperation and survival. Come experience mountains and canyons, desert and dunes, night skies and spectacular vistas within a place unlike any other within the NPS.</dd>
+            <dd class="invisible">Guadalupe Mountains National Park protects the world's most extensive Permian fossil reef, the four highest peaks in Texas, an environmentally diverse collection of flora and fauna, and the stories of lives shaped through conflict, cooperation and survival. Come experience mountains and canyons, desert and dunes, night skies and spectacular vistas within a place unlike any other within the NPS.</dd>
         <dt>Padre Island</dt>
-            <dd>Padre Island National Seashore separates the Gulf of Mexico from the Laguna Madre, one of a few hypersaline lagoons in the world. The park protects 70 miles of coastline, dunes, prairies, and wind tidal flats teeming with life. It is a safe nesting ground for the Kemp’s ridley sea turtle and a haven for over 380 bird species. It also has a rich history, including the Spanish shipwrecks of 1554.</dd>
-        <dt>Milk</dt>
-            <dd>White cold drink</dd>
-        <dt>Coffee</dt>
-            <dd>Black hot drink</dd>
-        <dt>Milk</dt>
-            <dd>White cold drink</dd>
-        <dt>Coffee</dt>
-            <dd>Black hot drink</dd>
-        <dt>Milk</dt>
-            <dd>White cold drink</dd>
+            <dd class="invisible">Padre Island National Seashore separates the Gulf of Mexico from the Laguna Madre, one of a few hypersaline lagoons in the world. The park protects 70 miles of coastline, dunes, prairies, and wind tidal flats teeming with life. It is a safe nesting ground for the Kemp’s ridley sea turtle and a haven for over 380 bird species. It also has a rich history, including the Spanish shipwrecks of 1554.</dd>
+        <dt>Rio Grande</dt>
+            <dd class="invisible">It is an irresistible playground where unruly rapids check your skills as a canyon wren’s definitive call cascades down ancient limestone cliffs. Below the chasm, the canyon’s raw beauty dances across mirrored water. While the primal nature of the river stirs hunger for spirited adventure, the river is also an undulant ribbon of wetland corridor and, against all odds, the lifeblood of the desert.</dd>
+        <dt>San Antonio Missions</dt>
+            <dd class="invisible">After 10,000 years, the people of South Texas found their cultures, their very lives under attack. In the early 1700s Apache raided from the north, deadly diseases traveled from Mexico, and drought lingered. Survival lay in the missions. By entering a mission, they foreswore their traditional life to become Spanish, accepting a new religion and pledging fealty to a distant and unseen king.</dd>
+        <dt>Waco Mammoth</dt>
+            <dd class="invisible">On July 10, 2015, President Barack Obama issued a Presidential Proclamation making the Waco Mammoth Site a new unit of the National Park System. This paleontological site represents the nation’s only recorded discovery of a nursery herd of Columbian mammoths. Visitors can view "in situ" fossils including female mammoths, a bull mammoth, and a camel that lived approximately 67,000 years ago.</dd>
+        <dt>Alibates Flint Quarries</dt>
+            <dd class="invisible">13,000 years ago this site was already well-known by mammoth hunters as a place to get the best stone for their tools. Centuries passed but the colorful flint found right here in the Texas panhandle never lost its value and usefulness. Visit and gain a sense of how integral this site was to the survival, commerce and culture of the High Plains.</dd>
+        <dt>Chamizal</dt>
+            <dd class="invisible">Chamizal is more than just an urban park to recreate or enjoy a quiet afternoon. These grounds are a reminder of the harmonious settlement of a 100-year border dispute between the United States and Mexico. We celebrate the cultures of the borderlands to promote the same mutual respect that helped to diplomatically resolve an international disagreement.</dd>
     </dl>
-
+    <a href="#" id="invToggle">Toggle view</a>
     <script src="js/jquery.js"></script>
     <script>
+        "use strict";
+        $(function () {
 
+           $("#invToggle").click(function(){
+              $("dd").toggleClass('invisible');
+           });
+
+           $("dt").click(function() {
+              $(this).addClass("highlighted");
+           });
+        });
     </script>
 </body>
 </html>
