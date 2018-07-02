@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Konami Code</title>
+
+</head>
+<body>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        #ytplayer {
+            opacity: 0;
+        }
+        #lightning {
+            position: relative;
+            bottom: 120px;
+            height: 700px;
+            width: 100%;
+            visibility: hidden;
+        }
+        #vegeta {
+            position: relative;
+            margin-left: 100px;
+            bottom: 200px;
+            visibility: hidden;
+        }
+    </style>
+    <div class="container"></div>
+        <h1>Konami Code</h1>
+        <p>"38","38","40","40","37","39","37","39","66","65","13"</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet, asperiores dolore doloribus harum necessitatibus neque odit optio perspiciatis quia quibusdam quis quod repudiandae vitae? Iure odit perferendis possimus quibusdam repellat.</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci alias architecto consectetur consequatur, consequuntur distinctio dolore dolorem, excepturi iusto magni mollitia natus numquam provident quia repellendus temporibus unde voluptate voluptatum!</p>
+        <img id="lightning" src="img/lightning.jpg" alt="lightning">
+        <iframe id="vegeta" width="80%" height="700px" src="https://www.youtube-nocookie.com/embed/eT7u8R2d8hc?rel=0&amp;controls=0wmode=opaque&autohide=1&autoplay=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <iframe id="ytplayer" width="50" height="50" src="https://www.youtube.com/embed/ki4a4d7wJRQ?wmode=opaque&autohide=1&autoplay=0&enablejsapi=1" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+    <!-- ------------------- JS --------------------------- -->
+        <script src="js/jquery.js"></script>
+        <script>
+            "use strict";
+            var userKey = [38];
+            var final = "3838404037393739666513";
+
+            $(document).keyup(function(event){
+                userKey.push(event.keyCode);
+                if(userKey.length -1 == 11){
+                    userKey.splice(userKey.length - 12,1);
+                    if(userKey.join("") == final){
+
+                        $("iframe#ytplayer").attr("src", $("iframe#ytplayer").attr("src").replace("autoplay=0", "autoplay=1"));
+                        //$("#lightning").toggle("pulsate");
+                        $("#lightning").css("visibility", "visible").animate({left: "+=50", right:"+=10", height: "toggle"}, 2000);
+                        $("body").css("background", "black");
+                        setTimeout(function() {
+                            $("iframe#vegeta").css("visibility", "visible").attr("src", $("iframe#vegeta").attr("src").replace("autoplay=0", "autoplay=1"));
+                        }, 4000);
+                    }
+                }
+            });
+        </script>
+</body>
+</html>
