@@ -30,7 +30,9 @@
 </style>
     <div>
         <h1>Would you like to sign up for our newsletter?</h1>
+        <span>x</span>
     </div>
+    <h2 id="eightSec" class="invisible">Would you like to register for the site?</h2>
     <h1>Texas National Park FAQs</h1>
     <a href="#" id="invToggle">Toggle view</a>
     <dl>
@@ -57,25 +59,25 @@
     </dl>
     <button id="highlightLast" type="button">Highlight last item</button>
     <h3 id="parkHeading1">Padre Island</h3>
-    <ul id="national-parks">
-        <li>Arches</li>
-        <li>Badlands</li>
-        <li>Carlsbad Caverns</li>
-        <li>Denali</li>
+    <ul class="invisible" id="national-parks">
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
     </ul>
     <h3>San Antonio Missions</h3>
-    <ul id="parksUL2">
-        <li>Abilene</li>
-        <li>Big Bend</li>
-        <li>Choke Canyon</li>
-        <li>Davis Mountains</li>
+    <ul class="invisible" id="parksUL2">
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
     </ul>
     <h3>Big Ben</h3>
-    <ul id="parksUL3">
-        <li>Abilene</li>
-        <li>Big Bend</li>
-        <li>Choke Canyon</li>
-        <li>Davis Mountains</li>
+    <ul class="invisible" id="parksUL3">
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
+        <li>facts lorem ipsum</li>
     </ul>
     <div class="left">
         <img id="img1" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";>
@@ -96,47 +98,57 @@
         "use strict";
         $(function () {
 
-            //Attribute and CSS exercise
-           $("#invToggle").click(function(event){
-               event.preventDefault();
-              $("dd").toggleClass('invisible');
-           });
-           $("dt").click(function() {
-              $(this).addClass("highlighted");
-           });
+           //  //Attribute and CSS exercise
+           // $("#invToggle").click(function(event){
+           //     event.preventDefault();
+           //    $("dd").toggleClass('invisible');
+           // });
+           // $("dt").click(function() {
+           //    $(this).addClass("highlighted");
+           // });
+           //
+           // //Traverse exercise
+           //  $("#highlightLast").click(function() {
+           //      $("ul").each(function () {
+           //          $(this).children().last().css("background", "yellow");
+           //      });
+           //  });
+           //  $("h3").click(function(){
+           //     $(this).next().css("font-weight", "bold");
+           //  });
+           //  $("li").click(function(){
+           //     $(this).parent().children().first().css("color", "blue");
+           //  });
+           //
+           //  //BONUS--------------------------------------
+           //  var img1 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";
+           //  var img2 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";
+           //  var img3 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_156538823%20%281%29.jpg?itok=2nFfER4z";
+           //
+           //  $("#btnLeft").click(function(){
+           //      $(this).parent().children().first().attr("src",img2);
+           //      $("#img2").attr("src",img1);
+           //  });
+           //  $("#btnMid").click(function(){
+           //      var randomPic = [img1, img3];
+           //      var rand = randomPic[Math.floor(Math.random()*randomPic.length)];
+           //      $(this).parent().children().first().attr("src",rand);
+           //  });
+           //  // $("#btnRight").toggle(
+           //  //     function(){$(this).parent().children().first().attr("src",img2);},
+           //  //     function(){$("#img2").attr("src",img3);}
+           //  // ).click();
 
-           //Traverse exercise
-            $("#highlightLast").click(function() {
-                $("ul").each(function () {
-                    $(this).children().last().css("background", "yellow");
-                });
+            //ELEMENTS exercise
+            $("span").click(function(){
+               $(this).parent().hide();
             });
             $("h3").click(function(){
-               $(this).next().css("font-weight", "bold");
+                $(this).next().slideToggle();
             });
-            $("li").click(function(){
-               $(this).parent().children().first().css("color", "blue");
+            $(document).ready(function() {
+                $("#eightSec").delay(8000).fadeIn();
             });
-
-            //BONUS--------------------------------------
-            var img1 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";
-            var img2 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";
-            var img3 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_156538823%20%281%29.jpg?itok=2nFfER4z";
-
-            $("#btnLeft").click(function(){
-                $(this).parent().children().first().attr("src",img2);
-                $("#img2").attr("src",img1);
-            });
-            $("#btnMid").click(function(){
-                var randomPic = [img1, img3];
-                var rand = randomPic[Math.floor(Math.random()*randomPic.length)];
-                $(this).parent().children().first().attr("src",rand);
-            });
-            // $("#btnRight").toggle(
-            //     function(){$(this).parent().children().first().attr("src",img2);},
-            //     function(){$("#img2").attr("src",img3);}
-            // ).click();
-
         });
     </script>
 </body>
