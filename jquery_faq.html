@@ -17,7 +17,6 @@
         width: 90%;
         padding: 5px;
         margin: 7px;
-
     }
     .left {
         float: left;
@@ -81,12 +80,10 @@
     </ul>
     <div class="left">
         <img id="img1" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";>
-        <br>
         <button id="btnLeft" type="button">Swap</button>
     </div>
     <div class="left">
         <img id="img2" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";>
-        <br>
         <button id="btnMid" type="button">Swap</button>
     </div>
     <div class="left">
@@ -98,46 +95,58 @@
         "use strict";
         $(function () {
 
-           //  //Attribute and CSS exercise
-           // $("#invToggle").click(function(event){
-           //     event.preventDefault();
-           //    $("dd").toggleClass('invisible');
-           // });
-           // $("dt").click(function() {
-           //    $(this).addClass("highlighted");
-           // });
-           //
-           // //Traverse exercise
-           //  $("#highlightLast").click(function() {
-           //      $("ul").each(function () {
-           //          $(this).children().last().css("background", "yellow");
-           //      });
-           //  });
-           //  $("h3").click(function(){
-           //     $(this).next().css("font-weight", "bold");
-           //  });
-           //  $("li").click(function(){
-           //     $(this).parent().children().first().css("color", "blue");
-           //  });
-           //
-           //  //BONUS--------------------------------------
-           //  var img1 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";
-           //  var img2 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";
-           //  var img3 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_156538823%20%281%29.jpg?itok=2nFfER4z";
-           //
-           //  $("#btnLeft").click(function(){
-           //      $(this).parent().children().first().attr("src",img2);
-           //      $("#img2").attr("src",img1);
-           //  });
-           //  $("#btnMid").click(function(){
-           //      var randomPic = [img1, img3];
-           //      var rand = randomPic[Math.floor(Math.random()*randomPic.length)];
-           //      $(this).parent().children().first().attr("src",rand);
-           //  });
-           //  // $("#btnRight").toggle(
-           //  //     function(){$(this).parent().children().first().attr("src",img2);},
-           //  //     function(){$("#img2").attr("src",img3);}
-           //  // ).click();
+            //Attribute and CSS exercise
+           $("#invToggle").click(function(event){
+               event.preventDefault();
+              $("dd").toggleClass('invisible');
+           });
+           $("dt").click(function() {
+              $(this).addClass("highlighted");
+           });
+
+           //Traverse exercise
+            $("#highlightLast").click(function() {
+                $("ul").each(function () {
+                    $(this).children().last().css("background", "yellow");
+                });
+            });
+            $("h3").click(function(){
+               $(this).next().css("font-weight", "bold");
+            });
+            $("li").click(function(){
+               $(this).parent().children().first().css("color", "blue");
+            });
+
+            //BONUS--------------------------------------
+            var frame1 = $("#img1");
+            var frame2 = $("#img2");
+            var frame3 = $("#img3");
+            $("#btnLeft").click(function(){
+                //!Need tempImg to save img1 original SRC
+                var tempImg = frame1.attr("src");
+                frame1.attr("src", frame2.attr("src"));
+                frame2.attr("src", tempImg);
+            });
+            $("#btnMid").click(function(){
+                //!Need temp2Img to save img2 original SRC
+                var temp2img =  frame2.attr("src");
+                var randomPic = [frame1.attr("src"), frame3.attr("src")];
+                //randomly selects img1 or img3
+                var rand = randomPic[Math.floor(Math.random()*randomPic.length)];
+                //swaps img2 with either img1 or img3
+                frame2.attr("src",rand);
+                if(rand == frame1.attr("src")){
+                    frame1.attr("src", temp2img);
+                } else {
+                    frame3.attr("src", temp2img);
+                }
+            });
+            $("#btnRight").click(function(){
+                //!!eed temp3Img to save img3 original SRC
+                var temp3img = frame3.attr("src");
+                frame3.attr("src", frame2.attr("src"));
+                frame2.attr("src", temp3img);
+            });
 
             //ELEMENTS exercise
             $("span").click(function(){
