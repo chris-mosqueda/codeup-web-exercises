@@ -12,7 +12,25 @@
     .highlighted {
         background-color: #FF0;
     }
+    img {
+        border: 3px solid brown;
+        width: 90%;
+        padding: 5px;
+        margin: 7px;
+
+    }
+    .left {
+        float: left;
+        width: 30%;
+    }
+    #btnLeft, #btnMid, #btnRight {
+        margin-left: 42%;
+        margin-bottom: 50px;
+    }
 </style>
+    <div>
+        <h1>Would you like to sign up for our newsletter?</h1>
+    </div>
     <h1>Texas National Park FAQs</h1>
     <a href="#" id="invToggle">Toggle view</a>
     <dl>
@@ -59,8 +77,19 @@
         <li>Choke Canyon</li>
         <li>Davis Mountains</li>
     </ul>
-    <div>
-
+    <div class="left">
+        <img id="img1" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";>
+        <br>
+        <button id="btnLeft" type="button">Swap</button>
+    </div>
+    <div class="left">
+        <img id="img2" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";>
+        <br>
+        <button id="btnMid" type="button">Swap</button>
+    </div>
+    <div class="left">
+        <img id="img3" src="https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_156538823%20%281%29.jpg?itok=2nFfER4z";>
+        <button id="btnRight" type="button">Swap</button>
     </div>
     <script src="js/jquery.js"></script>
     <script>
@@ -83,11 +112,31 @@
                 });
             });
             $("h3").click(function(){
-               $("ul").children().css("font-weight", "bold");
+               $(this).next().css("font-weight", "bold");
             });
             $("li").click(function(){
                $(this).parent().children().first().css("color", "blue");
             });
+
+            //BONUS--------------------------------------
+            var img1 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_142351951.jpg?itok=y_xdbvtu";
+            var img2 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/arches_420020.JPG?itok=fc-ZBEKU";
+            var img3 = "https://www.nationalparks.org/sites/default/files/styles/wide_1x/public/shutterstock_156538823%20%281%29.jpg?itok=2nFfER4z";
+
+            $("#btnLeft").click(function(){
+                $(this).parent().children().first().attr("src",img2);
+                $("#img2").attr("src",img1);
+            });
+            $("#btnMid").click(function(){
+                var randomPic = [img1, img3];
+                var rand = randomPic[Math.floor(Math.random()*randomPic.length)];
+                $(this).parent().children().first().attr("src",rand);
+            });
+            // $("#btnRight").toggle(
+            //     function(){$(this).parent().children().first().attr("src",img2);},
+            //     function(){$("#img2").attr("src",img3);}
+            // ).click();
+
         });
     </script>
 </body>
