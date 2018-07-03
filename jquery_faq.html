@@ -37,11 +37,37 @@
         <dt>Chamizal</dt>
             <dd class="invisible">Chamizal is more than just an urban park to recreate or enjoy a quiet afternoon. These grounds are a reminder of the harmonious settlement of a 100-year border dispute between the United States and Mexico. We celebrate the cultures of the borderlands to promote the same mutual respect that helped to diplomatically resolve an international disagreement.</dd>
     </dl>
+    <button id="highlightLast" type="button">Highlight last item</button>
+    <h3 id="parkHeading1">Padre Island</h3>
+    <ul id="national-parks">
+        <li>Arches</li>
+        <li>Badlands</li>
+        <li>Carlsbad Caverns</li>
+        <li>Denali</li>
+    </ul>
+    <h3>San Antonio Missions</h3>
+    <ul id="parksUL2">
+        <li>Abilene</li>
+        <li>Big Bend</li>
+        <li>Choke Canyon</li>
+        <li>Davis Mountains</li>
+    </ul>
+    <h3>Big Ben</h3>
+    <ul id="parksUL3">
+        <li>Abilene</li>
+        <li>Big Bend</li>
+        <li>Choke Canyon</li>
+        <li>Davis Mountains</li>
+    </ul>
+    <div>
+
+    </div>
     <script src="js/jquery.js"></script>
     <script>
         "use strict";
         $(function () {
 
+            //Attribute and CSS exercise
            $("#invToggle").click(function(event){
                event.preventDefault();
               $("dd").toggleClass('invisible');
@@ -49,6 +75,19 @@
            $("dt").click(function() {
               $(this).addClass("highlighted");
            });
+
+           //Traverse exercise
+            $("#highlightLast").click(function() {
+                $("ul").each(function () {
+                    $(this).children().last().css("background", "yellow");
+                });
+            });
+            $("h3").click(function(){
+               $("ul").children().css("font-weight", "bold");
+            });
+            $("li").click(function(){
+               $(this).parent().children().first().css("color", "blue");
+            });
         });
     </script>
 </body>
