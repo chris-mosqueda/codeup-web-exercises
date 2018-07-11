@@ -1,0 +1,75 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <title>Weather map</title>
+    <style>
+        .box {
+            border: 1px solid gray;
+            display: inline;
+            float: left;
+        }
+
+        #map {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Weather Application</h1>
+        <h3>San Antonio</h3>
+        <div class="row weatherBoxes">
+            <div id="box1" class="col-sm-4 col-12 box text-center"></div>
+            <div id="box2" class="col-sm-4 col-12 box text-center"></div>
+            <div id="box3" class="col-sm-4 col-12 box text-center"></div>
+        </div>
+        <div id="map"></div>
+
+    </div>
+    <!-- ----------------------------- Scripts ------------------------------- -->
+    <script src="js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <script>
+        $(document).ready(function(){
+           "use strict";
+
+            var map = $.get("http://api.openweathermap.org/data/2.5/forecast", {
+                APPID: "9e3907dc2c0038016552d82ce11c4feb",
+                id: 4726206,
+                units: 'imperial'
+            });
+            map.done(function(data){
+                console.log(data);
+                for(var i = 0; i < data.list.length; i += 8){
+                    var output = ""; //resets output each time through loop so it prints correct (day) box1,2,3 temperatures
+                    if(i > 16){
+                        break;
+                    }
+                    output += "<h4>" + data.list[i].main.temp_max + "/" + data.list[i].main.temp_min + "</h4>";
+                    output += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
+                    output += "<p>" + data.list[i].weather[0].main + ": " + data.list[i].weather[0].description + "</p>";
+                    output += "<p>Humidity: " + data.list[i].main.humidity + "</p>";
+                    output += "<p>Wind: " + data.list[i].wind.speed + "</p>";
+                    output += "<p>Pressure: " + data.list[i].main.pressure + "</p>";
+                    if(i === 0){
+                        $("#box1").html(output);
+                    }
+                    if(i === 8){
+                        $("#box2").html(output);
+                    }
+                    if(i === 16){
+                        $("#box3").html(output);
+                    }
+                }
+            });
+
+        });
+    </script>
+</body>
+</html>

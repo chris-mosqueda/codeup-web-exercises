@@ -6,9 +6,11 @@
 </head>
 <body>
 
+
+    <script src="js/jquery.js"></script>
     <script>
         "use strict";
-
+        var word = "";
         var jackBox = {
             triggered: false,
             intervalId: null,
@@ -33,17 +35,16 @@
             ],
 
             play: function() {
-                for (var i = 0; i <= jackBox.lyrics.length - 1; i++) {
-                    console.log(jackBox.lyrics[i]);
 
-                }
-                // this.lyrics.forEach(function(element) {
-                //     setInterval(function(){console.log(element);
-                //     }, 1000);
-                // });
+                jackBox.lyrics.forEach(function(lyr){
+                    setInterval(function() {
+                        console.log(lyr);
+                    }, 1000);
+                });
             }
         };
-        jackBox.intervalId += setInterval(jackBox.play, 1000);
+        //jackBox.intervalId += setInterval(jackBox.play, 1000);
+        jackBox.play();
     </script>
 </body>
 </html>
