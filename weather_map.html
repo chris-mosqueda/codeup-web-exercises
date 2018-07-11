@@ -12,23 +12,38 @@
             display: inline;
             float: left;
         }
-
+        .main {
+            margin: 30px 70px;
+        }
         #map {
-            height: 500px;
+            height: 250px;
+            padding: 0;
+            margin: 25px 0;
+        }
+        #date1, #date2, #date3{
+            padding-bottom: 15px;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Weather Application</h1>
-        <h3>San Antonio</h3>
+    <div class="main">
+        <h1 class="text-center">Weather Application</h1>
+        <h3 class="text-center">San Antonio</h3>
         <div class="row weatherBoxes">
-            <div id="box1" class="col-sm-4 col-12 box text-center"></div>
-            <div id="box2" class="col-sm-4 col-12 box text-center"></div>
-            <div id="box3" class="col-sm-4 col-12 box text-center"></div>
+            <div  class="col-sm-4 col-12 box text-center">
+                <div id="date1"></div>
+                <div id="box1"></div>
+            </div>
+            <div  class="col-sm-4 col-12 box text-center">
+                <div id="date2"></div>
+                <div id="box2"></div>
+            </div>
+            <div  class="col-sm-4 col-12 box text-center">
+                <div id="date3"></div>
+                <div id="box3"></div>
+            </div>
         </div>
         <div id="map"></div>
-
     </div>
     <!-- ----------------------------- Scripts ------------------------------- -->
     <script src="js/jquery.js"></script>
@@ -36,40 +51,79 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
 
     <script>
-        $(document).ready(function(){
-           "use strict";
+        "use strict";
+        function initMap() {
+            var dragLat = 29.4241219;
+            var dragLon = -98.49362819999999;
 
-            var map = $.get("http://api.openweathermap.org/data/2.5/forecast", {
-                APPID: "9e3907dc2c0038016552d82ce11c4feb",
-                id: 4726206,
-                units: 'imperial'
-            });
-            map.done(function(data){
-                console.log(data);
-                for(var i = 0; i < data.list.length; i += 8){
-                    var output = ""; //resets output each time through loop so it prints correct (day) box1,2,3 temperatures
-                    if(i > 16){
-                        break;
-                    }
-                    output += "<h4>" + data.list[i].main.temp_max + "/" + data.list[i].main.temp_min + "</h4>";
-                    output += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
-                    output += "<p>" + data.list[i].weather[0].main + ": " + data.list[i].weather[0].description + "</p>";
-                    output += "<p>Humidity: " + data.list[i].main.humidity + "</p>";
-                    output += "<p>Wind: " + data.list[i].wind.speed + "</p>";
-                    output += "<p>Pressure: " + data.list[i].main.pressure + "</p>";
-                    if(i === 0){
-                        $("#box1").html(output);
-                    }
-                    if(i === 8){
-                        $("#box2").html(output);
-                    }
-                    if(i === 16){
-                        $("#box3").html(output);
-                    }
-                }
+            var myLatLng = {lat: 29.4241219, lng: -98.49362819999999};
+            var mapCanvas = document.getElementById('map');
+            var mapOptions = {
+                zoom: 5,
+                center: myLatLng
+            };
+
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+
+            // Marker
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                draggable:true,
+                title: 'Weather for this location'
             });
 
-        });
+            // Position of draggable marker
+            google.maps.event.addListener(marker, 'dragend', function(event) {
+                dragLat = this.getPosition().lat();
+                dragLon = this.getPosition().lng();
+                threeDayWeather(dragLat, dragLon);
+                // call the function to get the weather based on lat and lon values
+            });
+
+            // a function to get the weather by lat and lon values
+            function threeDayWeather() {
+                var map = $.get("https://api.openweathermap.org/data/2.5/forecast/daily", {
+                    APPID: "7f8e3aa0aad113510e0c1eaafd1c17b8",
+                    lat: dragLat,
+                    lon: dragLon,
+                    units: 'imperial',
+                    cnt: 3
+                });
+                map.done(function(data){
+                    console.log(data);
+                    for(var i = 0; i < data.list.length; i ++){
+                        var output = ""; //resets output each time through loop so it prints correct (day) box1,2,3 temperatures
+                        output += "<h4>" + data.list[i].temp.min + "<span>&#176;</span>/" + data.list[i].temp.max + "<span>&#176;</span></h4>";
+                        output += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
+                        output += "<p>" + data.list[i].weather[0].main + ": " + data.list[i].weather[0].description + "</p>";
+                        output += "<p>Humidity: " + data.list[i].humidity + "</p>";
+                        output += "<p>Wind: " + data.list[i].speed + "</p>";
+                        output += "<p>Pressure: " + data.list[i].pressure + "</p>";
+                        if(i === 0){
+                            var today = new Date();
+                            var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
+                            $("#date1").html(date);
+                            $("#box1").html(output);
+                        }
+                        if(i === 1){
+                            var today = new Date();
+                            var date = (today.getMonth()+1)+'-'+(today.getDate()+1)+'-'+today.getFullYear();
+                            $("#date2").html(date);
+                            $("#box2").html(output);
+                        }
+                        if(i === 2){
+                            var today = new Date();
+                            var date = (today.getMonth()+1)+'-'+(today.getDate()+2)+'-'+today.getFullYear();
+                            $("#date3").html(date);
+                            $("#box3").html(output);
+                        }
+                    }
+                });
+            }
+            threeDayWeather();
+        }
     </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxIPbNd4ljI6NdSyP5ugk4XoKDzw2VEZM&callback=initMap"></script>
 </body>
 </html>
