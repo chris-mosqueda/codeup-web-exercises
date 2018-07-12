@@ -7,6 +7,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
     <title>Weather map</title>
     <style>
+        body {
+            padding: 0;
+            margin: 0;
+            background-image:url("img/whiteBlue.jpg");
+            /* Full height */
+            height: 100%;
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        h6 {
+            color: black;
+            background: white;
+            opacity: 0.8;
+            padding: 5px;
+            text-shadow: none;
+        }
         .box {
             border: 1px solid gray;
             display: inline;
@@ -15,35 +33,50 @@
         .main {
             margin: 30px 70px;
         }
+        .bgImg {
+            background-size: cover;
+        }
         #map {
             height: 250px;
             padding: 0;
-            margin: 25px 0;
+            margin: 15px 0;
         }
-        #date1, #date2, #date3{
-            padding-bottom: 15px;
+
+        #bg1, #bg2, #bg3{
+            padding: 0;
+            color: white;
+            text-shadow: 0 1px 6px black, 0 0 15px gray;
+        }
+        #map, .weatherBoxes {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
         }
     </style>
 </head>
 <body>
     <div class="main">
         <h1 class="text-center">Weather Application</h1>
-        <h3 class="text-center">San Antonio</h3>
+        <h3 id="location" class="text-center">San Antonio</h3>
+        <form class="form-inline">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search City" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+        <hr>
         <div class="row weatherBoxes">
-            <div  class="col-sm-4 col-12 box text-center">
-                <div id="date1"></div>
-                <div id="box1"></div>
+            <div id="bg1" class="bgImg col-sm-4 col-12 box text-center">
+                <h6 id="date1"></h6>
+                <p id="box1"></p>
             </div>
-            <div  class="col-sm-4 col-12 box text-center">
-                <div id="date2"></div>
-                <div id="box2"></div>
+            <div id="bg2" class="bgImg col-sm-4 col-12 box text-center">
+                <h6 id="date2"></h6>
+                <p id="box2"></p>
             </div>
-            <div  class="col-sm-4 col-12 box text-center">
-                <div id="date3"></div>
-                <div id="box3"></div>
+            <div id="bg3" class="bgImg col-sm-4 col-12 box text-center">
+                <h6 id="date3"></h6>
+                <p id="box3"></p>
             </div>
         </div>
-        <div id="map"></div>
+        <hr>
+        <div id="map" class="border border-secondary"></div>
     </div>
     <!-- ----------------------------- Scripts ------------------------------- -->
     <script src="js/jquery.js"></script>
@@ -53,6 +86,12 @@
     <script>
         "use strict";
         function initMap() {
+            var sunny = 'https://media.giphy.com/media/3og0Iu95EbNXybsT5u/giphy.gif';
+            var cloudy ='https://media.giphy.com/media/Ui9ePONvKo6mk/giphy.gif';
+            var rainy = 'https://media.giphy.com/media/t7Qb8655Z1VfBGr5XB/giphy.gif';
+            var thunder = 'https://media.giphy.com/media/fRPKCSsdpjeec/giphy.gif';
+            var snow = 'https://media.giphy.com/media/BDucPOizdZ5AI/giphy.gif';
+
             var dragLat = 29.4241219;
             var dragLon = -98.49362819999999;
 
@@ -92,25 +131,29 @@
                 });
                 map.done(function(data){
                     console.log(data);
+                    $("#location").html("City: " + data.city.name + "<br>Country: " + data.city.country);
                     for(var i = 0; i < data.list.length; i ++){
                         var output = ""; //resets output each time through loop so it prints correct (day) box1,2,3 temperatures
                         output += "<h4>" + data.list[i].temp.min + "<span>&#176;</span>/" + data.list[i].temp.max + "<span>&#176;</span></h4>";
                         output += "<img src=http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png>";
-                        output += "<p>" + data.list[i].weather[0].main + ": " + data.list[i].weather[0].description + "</p>";
-                        output += "<p>Humidity: " + data.list[i].humidity + "</p>";
-                        output += "<p>Wind: " + data.list[i].speed + "</p>";
-                        output += "<p>Pressure: " + data.list[i].pressure + "</p>";
+                        output += "<p class='font-weight-bold'>" + data.list[i].weather[0].main + ": " + data.list[i].weather[0].description + "</p>";
+                        output += "<p class='font-weight-bold'>Humidity: " + data.list[i].humidity + "</p>";
+                        output += "<p class='font-weight-bold'>Wind: " + data.list[i].speed + "</p>";
+                        output += "<p class='font-weight-bold'>Pressure: " + data.list[i].pressure + "</p>";
+
                         if(i === 0){
                             var today = new Date();
                             var date = (today.getMonth()+1)+'-'+today.getDate()+'-'+today.getFullYear();
                             $("#date1").html(date);
                             $("#box1").html(output);
+                            //weatherImg();
                         }
                         if(i === 1){
                             var today = new Date();
                             var date = (today.getMonth()+1)+'-'+(today.getDate()+1)+'-'+today.getFullYear();
                             $("#date2").html(date);
                             $("#box2").html(output);
+                            //weatherImg();
                         }
                         if(i === 2){
                             var today = new Date();
@@ -118,6 +161,22 @@
                             $("#date3").html(date);
                             $("#box3").html(output);
                         }
+
+                        //function weatherImg() {
+                        if (data.list[i].weather[0].icon === "01d" || data.list[i].weather[0].icon === "02d" ||
+                            data.list[i].weather[0].icon === "01n" || data.list[i].weather[0].icon === "02n") {
+                            $(".bgImg").slice(i).css("background-image", "url(" + sunny + ")", "opacity", "0.5");
+                        } else if (data.list[i].weather[0].icon === "03d" || data.list[i].weather[0].icon === "04d" ||
+                            data.list[i].weather[0].icon === "03n" || data.list[i].weather[0].icon === "04n") {
+                            $(".bgImg").slice(i).css("background-image", "url(" + cloudy + ")");
+                        } else if (data.list[i].weather[0].icon === "11d") {
+                            $(".bgImg").slice(i).css("background-image", "url(" + thunder + ")");
+                        } else if (data.list[i].weather[0].icon === "13d") {
+                            $(".bgImg").slice(i).css("background-image", "url(" + snow + ")");
+                        } else {
+                            $(".bgImg").slice(i).css("background-image", "url(" + rainy + ")", "background-size", "contain");
+                        }
+                        //}
                     }
                 });
             }
