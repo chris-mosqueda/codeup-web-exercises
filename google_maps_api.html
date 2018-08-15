@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Simple Map</title>
+    <link rel="stylesheet" href="css/gmaps.css">
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+
+</head>
+<body>
+    <div id="map"></div>
+
+    <script>
+        function initMap() {
+            var mapCanvas = document.getElementById('map');
+            var mapOtions = {
+                zoom: 5,
+                center: {
+                    lat: 29.9681302,
+                    lng: -90.07854650000002
+                }
+            };
+
+            var map = new google.maps.Map(mapCanvas, mapOtions);
+
+            var favRestaurants = [
+                {
+                    name: "Dooky Chase",
+                    restType: "Creole",
+                    size: "medium",
+                    location: {
+                        lat: 29.9681302,
+                        lng: -90.07854650000002
+                    }
+                },
+
+                {
+                    name: "Chama Gaucha",
+                    restType: "Brazilian Steakhouse",
+                    size: "large",
+                    location: {
+                        lat: 29.6125926,
+                        lng: -98.49736680000001
+                    }
+                },
+
+                {
+                    name: "Bill Millers BBQ",
+                    restType: "Fast Food",
+                    size: "medium",
+                    location: {
+                        lat: 29.5359264,
+                        lng: -98.33068270000001
+                    }
+                }
+            ];
+
+
+            favRestaurants.forEach(function(restaurant) {
+                console.log(restaurant);
+
+
+                // SETTING MARKER ------------------------------------
+                var marker = new google.maps.Marker({
+                    position: {
+                        lat: restaurant.location.lat,
+                        lng: restaurant.location.lng
+                    },
+                    map: map
+                 });
+                console.log(marker);
+                var infoWindow = new google.maps.InfoWindow({
+                    content: "This is " + restaurant.name + "<br>It is a " + restaurant.restType + " joint <br>and is a rather " + restaurant.size + " sized establishment."
+                });
+                infoWindow.open(map, marker);
+            });
+
+
+            // var geo = new google.maps.Geocoder();
+            // geo.geocode({address: "2400, 10676 Toepperwein Rd., Converse, TX 78109"}, function(response, status) {
+            //     if (status === "OK") {
+            //         console.log(response);
+            //         console.log(response[0].geometry.location.lat());
+            //         console.log(response[0].geometry.location.lng());
+            //     }  else {
+            //         alert("Invalid");
+            //     }
+            // });
+
+            // // SETTING MARKER ------------------------------------
+            // var dookyChase = new google.maps.Marker({
+            //     position: {
+            //         lat: 29.9681302,
+            //         lng: -90.07854650000002,
+            //     },
+            //     animation: google.maps.Animation.DROP,
+            //     map: map
+            // });
+            // dookyChase.addListener('click', toggleBounce);
+            //
+            // function toggleBounce(){
+            //     if (dookyChase.getAnimation() !== null) {
+            //         dookyChase.setAnimation(null);
+            //     } else {
+            //         dookyChase.setAnimation(google.maps.Animation.BOUNCE);
+            //     }
+            // }
+
+            //INFO WINDOW ------------------------------------------
+            // var infoWindow = new google.maps.InfoWindow({
+            //     content: "<h1>This is Dooky Chase</h1>\nThey serve seafood and creole dishes!"
+            // });
+
+
+
+            // map.addListener('click', function(){
+            //     infoWindow.open(map, dookyChase);
+
+
+            // });
+        }
+    </script>
+
+
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxIPbNd4ljI6NdSyP5ugk4XoKDzw2VEZM&callback=initMap"
+            async defer></script>
+</body>
+</html>
